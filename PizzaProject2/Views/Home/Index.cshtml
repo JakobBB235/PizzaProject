@@ -1,0 +1,78 @@
+﻿@using System.Collections
+@using Microsoft.Owin.Security.Provider
+@using PizzaProject2.Models.Database
+@model IEnumerable<PizzaProject2.Models.Database.Pizza>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Italiensk Pizza</h1>
+                <p>Bestilling er mulig på hjemmesiden ved at logge ind, eller ved opkald på tlf. ????????</p>
+                @*<img src="/Content/image/2pizzas.png" />*@
+            </div>
+            <div id="divPizzas" class="col-md-6">
+                @Html.Action("PartialShoppingCartLoad", "Order")
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Menukort</h2>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Nr.</th>
+            <th>Navn</th>
+            <th>Fyld</th>
+            <th>Pris</th>
+            <th></th>
+        </tr>
+        @foreach (var pizza in Model)
+        {
+            <tr>
+                <td>@pizza.Nr</td>
+                <td>@pizza.Name</td>
+                <td>@pizza.Toppings</td>
+                <td>@pizza.Price kr</td>
+                <td>
+                    <div class="new-button-class">
+                        @*Delete? Javascript in seperate doc, make if statement checking user role*@
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <div class="new-button-class2">
+                                @using (Html.BeginForm("DeletePizza", "Pizza", new { id = pizza.Id }, FormMethod.Post,
+                                    new { onclick = "return confirm('Er du sikker på at du vil slette pizzaen?');" }))
+                                {
+                                    @Html.HttpMethodOverride(HttpVerbs.Delete)
+                                    <button type="submit" class="btn btn-danger">Slet</button>
+                                }
+                            </div>
+                            @Html.ActionLink("Rediger", "EditPizza", "Pizza", new { id = pizza.Id }, new { @class = "btn btn-warning" })
+                        }
+                        @Ajax.ActionLink("+", "PartialShoppingCartAddPizza", "Order", new { id = pizza.Id }, new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       UpdateTargetId = "divPizzas",
+                       InsertionMode = InsertionMode.Replace
+                   }, new { @class = "btn btn-success" })
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        using (Html.BeginForm("ResetPizzaMenu", "Pizza", FormMethod.Post,
+            new { onclick = "return confirm('Er du sikker på at du vil genstarte pizza listen?');" }))
+        {
+            <button type="submit" class="btn btn-danger">Reset Pizzas</button>
+        }
+        @*@Html.ActionLink("ResetPizzas", "ResetPizzaMenu", "Pizza", new { @class = "btn btn-danger" }, new { onclick = "return confirm('Er du sikker på at du vil genstarte pizza listen?');" })*@
+    }
+</div>

@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "ViewGraph";
+}
+
+<h2>ViewGraph</h2>
+
+<script type="text/javascript">
+
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', { 'packages': ['corechart'] }).then(function () {
+        // Get Json data
+        $.ajax({
+            url: '/Graph/GetJsonTest',
+            dataType: 'json'
+        }).done(function (jsonData) {
+            console.log(jsonData);
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', "Pizza");
+            data.addColumn('number', "Amount");
+
+            $.each(jsonData, function (index, row) {
+                console.log(row.Navn);
+                data.addRow([
+                    row.Pizza,
+                    row.Amount
+                ]);
+            });
+
+            // Set chart options
+            var options = {
+                'title': 'Pizza Chart!',
+                'width': 400,
+                'height': 300
+            };
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        });
+    });
+</script>
+
+<div id="chart_div"></div>

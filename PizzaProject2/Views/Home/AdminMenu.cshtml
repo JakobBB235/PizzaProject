@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "AdminMenu";
+}
+
+<h2>AdminMenu</h2>
+
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        Graphs
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("Pie Chart", "ViewGraph", "Graph")</li>
+        <li>@Html.ActionLink("Other Chart", "ViewGraph2", "Graph")</li>
+    </ul>
+</div>
+
+@Html.ActionLink("Ny Pizza", "CreatePizza", "Pizza", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Bestillinger", "ViewOrders", "Order", null, new { @class = "btn btn-primary" })

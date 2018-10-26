@@ -1,0 +1,42 @@
+﻿@*@model IEnumerable<PizzaProject2.Models.Database.Order>*@ 
+
+@{
+    ViewBag.Title = "ShoppingCart";
+}
+
+<div class="container">
+    <h2>Bestillingskurv</h2>
+
+    <table class="table">
+        <tr>
+            <th>Nr.</th>
+            <th>Navn</th>
+            <th>Fyld</th>
+            <th>Pris</th>
+            <th>Antal</th>
+            <th></th>
+        </tr>
+        @foreach (var pizza in Model)
+        {
+            <tr>
+                <td>@pizza.Nr</td>
+                <td>@pizza.Name</td>
+                <td>@pizza.Toppings</td>
+                <td>@pizza.Price kr</td>
+                <td>1</td>
+                <td>
+                    <div class="new-button-class">
+                        @*Send new { id = pizza.id }*@
+                        <button type="submit" class="btn btn-danger">-</button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+
+    @using (Html.BeginForm("Pay", "Order", FormMethod.Post,
+        new { onclick = "return confirm('Er du sikker på at du vil betale?');" }))
+    {
+        <button type="submit" class="btn btn-primary">Betal</button>
+    }
+</div>

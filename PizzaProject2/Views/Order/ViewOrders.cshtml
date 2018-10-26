@@ -1,0 +1,60 @@
+﻿@* @model PizzaProject.Models.OrderViewModel *@
+@model PizzaProject2.Models.OrderViewModel
+
+@{
+    ViewBag.Title = "ViewOrders";
+}
+
+<h2>Bestillinger</h2>
+
+<table class="table">
+    @foreach (var order in Model.orders)
+    {
+        <tr>
+            <th>
+                Brugernavn
+            </th>
+            <th>
+                Bestilt
+            </th>
+            <th></th>
+        </tr>
+
+        <tr>
+            <td>
+                test
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.DateTimeCreated)
+            </td>
+            <td>
+                @Html.ActionLink("X", "EndOrder", "Order", new { id = order.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <th style="background-color: grey">
+                PizzaNr
+            </th>
+            @* <th style="background-color: grey"> *@
+            @*     PizzaNavn *@
+            @* </th> *@
+            @* <th style="background-color: grey"> *@
+            @*     PizzaFyld *@
+            @* </th> *@
+        </tr>
+        foreach (var item in Model.orderItems)
+        {
+            if (item.OrderId == order.Id)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PizzaId)
+                    </td>
+                    @* <td>test</td> *@
+                    @* <td>test</td> *@
+                </tr>
+            }
+        }
+    }
+</table>

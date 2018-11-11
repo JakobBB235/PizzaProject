@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using PizzaProject2.Models.Database;
+using PizzaProject2.Models.GraphData;
 
 namespace PizzaProject2.Models.Services
 {
@@ -148,6 +149,35 @@ namespace PizzaProject2.Models.Services
             }
         }
 
-       
+        ////NEW
+        //public List<GraphDataViewModel> ReplacePizzaIdWithPizzaNr(List<GraphDataViewModel> graphDataViewModel)
+        //{
+        //    List<int> pizzaIdList = new List<int>();
+        //    foreach (GraphDataViewModel item in graphDataViewModel)
+        //    {
+        //        pizzaIdList.Add(item.PizzaNr);
+        //    }
+        //    List<Pizza> pizzaList = null;//Insert stackoverflow code
+        //    foreach (GraphDataViewModel item in graphDataViewModel)
+        //    {
+        //        if (pizzaIdList.Contains(Convert.ToInt32(item.Pizza)))
+        //        {
+
+        //        }
+        //    }
+        //    return graphDataViewModel;
+        //}
+
+        //NEW
+        public List<GraphDataViewModel> ReplacePizzaIdWithPizzaNr(List<GraphDataViewModel> graphDataViewModel) //Add to interface
+        {  
+            foreach(GraphDataViewModel item in graphDataViewModel)
+            {
+                Pizza pizza = GetPizzaById(Convert.ToInt32(item.Pizza)); //Get pizza in DB
+                item.Pizza = pizza.Nr.ToString(); //Set the correct pizza nr.
+            }
+
+            return graphDataViewModel;
+        }
     }
 }

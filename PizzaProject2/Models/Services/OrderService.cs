@@ -10,7 +10,7 @@ namespace PizzaProject2.Models.Services
     {
         private DataClasses1DataContext _dbContext = new DataClasses1DataContext();
 
-        public void EndOrder(int orderId)
+        public void EndOrder(int orderId) 
         {
             Order orderDB = GetOrderById(orderId); // Find order in DB
             orderDB.IsActive = false; //Stored as bit in DB, only accepts boolean values here.

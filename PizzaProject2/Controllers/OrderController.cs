@@ -85,10 +85,16 @@ namespace PizzaProject2.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult ViewOrders()
         {
-            var orders = _orderService.GetAllOrders(); //get orders from DB
-            var orderItems = _orderItemService.GetAllOrderItems(); //get orderItems from DB
-            OrderViewModel orderViewModel = new OrderViewModel(orders, orderItems);
+            var orders = _orderService.GetAllOrders(); //get active orders from DB
+            //var orderItems = _orderItemService.GetAllOrderItems(); //get all orderItems from DB
 
+            //NEW  
+            //List<Pizza> pizzaList = _orderItemService.CovertOrderItemToPizza(orderItems);//Covert orderitems to pizzas
+            //OrderViewModel orderViewModel = new OrderViewModel(orders, pizzaList);
+            List<OrderItemViewModel> orderItemViewModels = _orderItemService.CovertOrderItemToViewModel(orders);
+            OrderViewModel orderViewModel = new OrderViewModel(orders, orderItemViewModels);
+
+            //OrderViewModel orderViewModel = new OrderViewModel(orders, orderItems);
             return View(orderViewModel); //return lists by using a view model. 
         }
 

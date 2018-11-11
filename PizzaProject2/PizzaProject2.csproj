@@ -215,6 +215,7 @@
     <Compile Include="Models\GraphData\GraphDataViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OrderItemViewModel.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\Services\IOrderItemService.cs" />
     <Compile Include="Models\Services\IOrderService.cs" />

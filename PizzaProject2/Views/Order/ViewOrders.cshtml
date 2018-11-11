@@ -1,5 +1,4 @@
-﻿@* @model PizzaProject.Models.OrderViewModel *@
-@model PizzaProject2.Models.OrderViewModel
+﻿@model PizzaProject2.Models.OrderViewModel
 
 @{
     ViewBag.Title = "ViewOrders";
@@ -43,13 +42,13 @@
             @*     PizzaFyld *@
             @* </th> *@
         </tr>
-        foreach (var item in Model.orderItems)
+        foreach (var item in Model.orderItemViewModels) 
         {
-            if (item.OrderId == order.Id)
+            if (item.orderId == order.Id) 
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.PizzaId)
+                        @Html.DisplayFor(modelItem => item.pizzaNr)
                     </td>
                     @* <td>test</td> *@
                     @* <td>test</td> *@

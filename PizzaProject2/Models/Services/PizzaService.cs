@@ -149,27 +149,7 @@ namespace PizzaProject2.Models.Services
             }
         }
 
-        ////NEW
-        //public List<GraphDataViewModel> ReplacePizzaIdWithPizzaNr(List<GraphDataViewModel> graphDataViewModel)
-        //{
-        //    List<int> pizzaIdList = new List<int>();
-        //    foreach (GraphDataViewModel item in graphDataViewModel)
-        //    {
-        //        pizzaIdList.Add(item.PizzaNr);
-        //    }
-        //    List<Pizza> pizzaList = null;//Insert stackoverflow code
-        //    foreach (GraphDataViewModel item in graphDataViewModel)
-        //    {
-        //        if (pizzaIdList.Contains(Convert.ToInt32(item.Pizza)))
-        //        {
-
-        //        }
-        //    }
-        //    return graphDataViewModel;
-        //}
-
-        //NEW
-        public List<GraphDataViewModel> ReplacePizzaIdWithPizzaNr(List<GraphDataViewModel> graphDataViewModel) //Add to interface
+        public List<GraphDataViewModel> ReplacePizzaIdWithPizzaNr(List<GraphDataViewModel> graphDataViewModel)
         {  
             foreach(GraphDataViewModel item in graphDataViewModel)
             {

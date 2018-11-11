@@ -102,7 +102,7 @@ namespace PizzaProject2.Controllers
         public ActionResult EndOrder(int id) //Don't use get?
         {
             _orderService.EndOrder(id);
-            return RedirectToAction("ViewOrders", "Home");
+            return RedirectToAction("ViewOrders", "Order");
         }
     }
 }

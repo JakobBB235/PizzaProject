@@ -1,4 +1,5 @@
 ﻿using PizzaProject2.Models.Database;
+using PizzaProject2.Models.GraphData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace PizzaProject2.Models.Services
         void CreatePizza(Pizza newPizza);
         //void DeleteAllPizzas();
         void EditPizza(Pizza updatedPizza);
+        List<GraphDataViewModel> ReplacePizzaIdWithPizzaNr(List<GraphDataViewModel> graphDataViewModel);
     }
 }

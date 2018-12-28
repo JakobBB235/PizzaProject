@@ -9,12 +9,6 @@ namespace PizzaProject2.Controllers
 {
     public class GraphController : Controller
     {
-        // GET: Graph
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
         [Authorize(Roles = "Admin")]
         public ActionResult ViewGraph()
         {
@@ -28,7 +22,7 @@ namespace PizzaProject2.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult GetJsonTest()
+        public ActionResult GetJsonPizzaData()
         {
             GraphDataClass gdc = new GraphDataClass();
             List<GraphDataViewModel> viewModels = gdc.ConvertToViewModels();

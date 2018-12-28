@@ -20,9 +20,9 @@ namespace PizzaProject2.Models.Database
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
-    using System.ComponentModel.DataAnnotations;
-
-    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="PizzaDatabase")]
+	
+	
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="PizzaDatabase")]
 	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
 	{
 		
@@ -287,10 +287,9 @@ namespace PizzaProject2.Models.Database
 			}
 		}
 	}
-
-    [MetadataType(typeof(IPizza))]//NEW Line
-    [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Pizzas")]
-	public partial class Pizza : INotifyPropertyChanging, INotifyPropertyChanged, IPizza //NEW IPizza
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Pizzas")]
+	public partial class Pizza : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -483,7 +482,7 @@ namespace PizzaProject2.Models.Database
 		
 		private int _Id;
 		
-		private int _UserId;
+		private string _UserId;
 		
 		private string _DateTimeCreated;
 		
@@ -497,7 +496,7 @@ namespace PizzaProject2.Models.Database
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanging(string value);
     partial void OnUserIdChanged();
     partial void OnDateTimeCreatedChanging(string value);
     partial void OnDateTimeCreatedChanged();
@@ -531,8 +530,8 @@ namespace PizzaProject2.Models.Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
-		public int UserId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UserId
 		{
 			get
 			{

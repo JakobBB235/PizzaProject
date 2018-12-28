@@ -11,7 +11,7 @@
     google.charts.load('current', { 'packages': ['corechart', 'bar'] }).then(function () {
         // Get Json data
         $.ajax({
-            url: '/Graph/GetJsonTest',
+            url: '/Graph/GetJsonPizzaData',
             dataType: 'json'
         }).done(function (jsonData) {
             console.log(jsonData);
@@ -20,6 +20,7 @@
             data.addColumn('string', "Pizza");
             data.addColumn('number', "Amount");
 
+            // Poppulate chart
             $.each(jsonData, function (index, row) {
                 console.log(row.Navn);
                 data.addRow([
@@ -35,11 +36,9 @@
                 height: 1000,
                 hAxis: {
                     title: 'Amount of ordered pizzas',
-                    minValue: 0,
-                    
-                    gridlines: { count: -1 },
-                    format: '0'
-
+                    minValue: 0//,    
+                    //gridlines: { count: -1 },
+                    //format: '0'
                 },
                 vAxis: {
                     title: 'Pizza Number'

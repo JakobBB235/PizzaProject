@@ -8,7 +8,7 @@ namespace PizzaProject2.Models.GraphData
     public class GraphDataViewModel
     {
         public int PizzaNr { get; set; }
-        public String Pizza { get; set; }
+        public String Pizza { get; set; } //Is actually PizzaNr
         public int Amount { get; set; }
 
         public GraphDataViewModel(String pizza, int amount) //string pizzaName,

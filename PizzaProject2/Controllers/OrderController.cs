@@ -18,20 +18,15 @@ namespace PizzaProject2.Controllers
         private OrderService _orderService = new OrderService();
         private OrderItemService _orderItemService = new OrderItemService();
 
-        // GET: Order
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
-        public PartialViewResult PartialShoppingCartLoad() //ShoppingCart
+        //Create partial view for the shoppingcart
+        public PartialViewResult PartialShoppingCartLoad() 
         {
             List<Pizza> sessionPizzas = (List<Pizza>)Session["Cart"];
             return PartialView("_ShoppingCart", sessionPizzas);
         }
 
-        //Create partial view file
-        public PartialViewResult PartialShoppingCartAddPizza(int id) //ShoppingCart
+        //Add pizza to the partial view for the shoppingcart
+        public PartialViewResult PartialShoppingCartAddPizza(int id)
         {
             var thePizza = _pizzaService.GetPizzaById(id);
             List<Pizza> sessionPizzas = (List<Pizza>)Session["Cart"];
@@ -46,15 +41,18 @@ namespace PizzaProject2.Controllers
             return View(sessionPizzas);
         }
 
+        //User can pay after adding items to shoppingcart. FIX USERID RELATIONS?
         public ActionResult Pay()
         {
             List<Pizza> sessionPizzas = (List<Pizza>)Session["Cart"];
-            int userId = 0;
+            //int userId = 0;
+            String userId = "None";
 
             //NEW
             //var currentUser = Membership.GetUser(User.Identity.Name);
             //string username = currentUser.UserName; //** get UserName
             //Guid userId = (Guid)currentUser.ProviderUserKey; //** get user ID
+            //var userId = WebSecurity.GetUserId 
 
             //var user = UserManager.FindById(User.Identity.GetUserId());
 
@@ -62,19 +60,20 @@ namespace PizzaProject2.Controllers
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             var user = UserManager.FindById(User.Identity.GetUserId());
 
+            userId = user.Id;
             //int userId = Convert.ToInt32(Membership.GetUser().ProviderUserKey.ToString()); //working?
 
-            try
-            {
-                //userId = Convert.ToInt32(User.Identity.GetUserId());//Try to get user id. does not work
-                //userId = Convert.ToInt32(currentUser.ProviderUserKey.ToString());
+            //try
+            //{
+            //    //userId = Convert.ToInt32(User.Identity.GetUserId());//Try to get user id. does not work
+            //    //userId = Convert.ToInt32(currentUser.ProviderUserKey.ToString());
 
-                userId = Convert.ToInt32(user.Id);
-                //System.Web.HttpContext.Current.User.Identity.Name
-            }
-            catch {
+            //    userId = Convert.ToInt32(user.Id);
+            //    //System.Web.HttpContext.Current.User.Identity.Name
+            //}
+            //catch {
 
-            }
+            //}
             _orderService.PayCreateOrder(sessionPizzas, userId);
             sessionPizzas.Clear(); //Clears list
             Session["Cart"] = sessionPizzas; //Clears session
@@ -86,16 +85,12 @@ namespace PizzaProject2.Controllers
         public ActionResult ViewOrders()
         {
             var orders = _orderService.GetAllOrders(); //get active orders from DB
-            //var orderItems = _orderItemService.GetAllOrderItems(); //get all orderItems from DB
 
-            //NEW  
-            //List<Pizza> pizzaList = _orderItemService.CovertOrderItemToPizza(orderItems);//Covert orderitems to pizzas
-            //OrderViewModel orderViewModel = new OrderViewModel(orders, pizzaList);
+            //Convert to view models
             List<OrderItemViewModel> orderItemViewModels = _orderItemService.CovertOrderItemToViewModel(orders);
             OrderViewModel orderViewModel = new OrderViewModel(orders, orderItemViewModels);
 
-            //OrderViewModel orderViewModel = new OrderViewModel(orders, orderItems);
-            return View(orderViewModel); //return lists by using a view model. 
+            return View(orderViewModel);
         }
 
         [Authorize(Roles = "Admin")]

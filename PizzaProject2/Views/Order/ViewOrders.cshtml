@@ -35,12 +35,6 @@
             <th style="background-color: grey">
                 PizzaNr
             </th>
-            @* <th style="background-color: grey"> *@
-            @*     PizzaNavn *@
-            @* </th> *@
-            @* <th style="background-color: grey"> *@
-            @*     PizzaFyld *@
-            @* </th> *@
         </tr>
         foreach (var item in Model.orderItemViewModels) 
         {
@@ -50,8 +44,6 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.pizzaNr)
                     </td>
-                    @* <td>test</td> *@
-                    @* <td>test</td> *@
                 </tr>
             }
         }

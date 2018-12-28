@@ -14,6 +14,7 @@ namespace PizzaProject2.Controllers
 
         public ActionResult Index()
         {
+            Console.WriteLine("Hej");
             var pizzas = _pizzaService.GetAllPizzas();
             if (pizzas != null)
                 return View(pizzas);

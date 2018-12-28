@@ -29,7 +29,7 @@ namespace PizzaProject2.Models.Services
             return order;
         }
 
-        public void PayCreateOrder(List<Pizza> sessionPizzas, int userId)
+        public void PayCreateOrder(List<Pizza> sessionPizzas, String userId) //int userId
         {
             if (sessionPizzas.Count > 0)
             {

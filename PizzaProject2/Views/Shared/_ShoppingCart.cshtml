@@ -1,6 +1,4 @@
-﻿@using System.Collections
-@using PizzaProject2.Models.Database
-@*@model IEnumerable<PizzaProject2.Models.Database.Pizza>*@
+﻿
 @model IEnumerable<PizzaProject2.Models.OrderItemViewModel>
 
 <div class="cart-style">
@@ -19,9 +17,6 @@
         @foreach (var pizza in Model)
         {
         <tr>
-            @*<td>1</td>
-        <td>@pizza.Nr</td>
-        <td>@pizza.Name</td>*@
             <td>@pizza.Amount</td>
             <td>@pizza.ThePizza.Nr</td>
             <td>@pizza.ThePizza.Name</td>

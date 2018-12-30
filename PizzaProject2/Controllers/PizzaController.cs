@@ -12,12 +12,6 @@ namespace PizzaProject2.Controllers
     {
         private PizzaService _pizzaService = new PizzaService();
 
-        // GET: Pizza
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult EditPizza(int id)
@@ -31,9 +25,6 @@ namespace PizzaProject2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditPizza(Pizza updatedPizza)
         {
-            //_pizzaService.EditPizza(updatedPizza);
-            //return RedirectToAction("Index", "Home");
-
             if (ModelState.IsValid)
             {
                 _pizzaService.EditPizza(updatedPizza);
@@ -72,8 +63,6 @@ namespace PizzaProject2.Controllers
             if (ModelState.IsValid)
             {
                 _pizzaService.CreatePizza(newPizza);
-                //return View();
-                //return View(newPizza);
                 return RedirectToAction("Index", "Home");
             }
             else

@@ -7,49 +7,6 @@
 
 <h2>Bestillinger</h2>
 
-@*<table class="table">
-        @foreach (var order in Model.orders)
-        {
-            <tr>
-                <th>
-                    Brugernavn
-                </th>
-                <th>
-                    Bestilt
-                </th>
-                <th></th>
-            </tr>
-
-            <tr>
-                <td>
-                    test
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.DateTimeCreated)
-                </td>
-                <td>
-                    @Html.ActionLink("X", "EndOrder", "Order", new { id = order.Id }, new { @class = "btn btn-danger" })
-                </td>
-            </tr>
-
-            <tr>
-                <th style="background-color: grey">
-                    PizzaNr
-                </th>
-            </tr>
-            foreach (var item in Model.orderItemViewModels)
-            {
-                if (item.orderId == order.Id)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.pizzaNr)
-                        </td>
-                    </tr>
-                }
-            }
-        }
-    </table>*@
 <table class="table">
     @foreach (var order in Model)
     {

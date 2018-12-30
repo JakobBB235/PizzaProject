@@ -32,8 +32,6 @@
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Admin Menu", "AdminMenu", "Home")</li>
-                        @*<li>@Html.ActionLink("Ny Pizza", "CreatePizza", "Pizza")</li>
-                       <li>@Html.ActionLink("Bestillinger", "ViewOrders", "Order")</li>*@
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

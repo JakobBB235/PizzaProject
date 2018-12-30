@@ -68,10 +68,13 @@ namespace PizzaProject2.Controllers
             return PartialView("_ShoppingCart", sessionPizzas);
         }
 
+        //public ActionResult RemovePizzaFromOrder()
+        //{
+
+        //}
+
         public ActionResult ShoppingCart()
         {
-            //List<Pizza> sessionPizzas = (List<Pizza>)Session["Cart"];
-            //return View(sessionPizzas);
             List<OrderItemViewModel> sessionPizzas = (List<OrderItemViewModel>)Session["Cart"];
             return View(sessionPizzas);
         }
@@ -79,7 +82,6 @@ namespace PizzaProject2.Controllers
         //User can pay after adding items to shoppingcart. FIX USERID RELATIONS?
         public ActionResult Pay()
         {
-            //List<Pizza> sessionPizzas = (List<Pizza>)Session["Cart"];
             List<OrderItemViewModel> sessionPizzas = (List<OrderItemViewModel>)Session["Cart"];
             //int userId = 0;
             String userId = "None";

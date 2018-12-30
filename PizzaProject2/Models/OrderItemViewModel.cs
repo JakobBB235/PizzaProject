@@ -17,10 +17,6 @@ namespace PizzaProject2.Models
         //    this.orderId = orderId;
         //}
 
-        //public OrderItemViewModel()
-        //{
-        //}
-
         public Pizza ThePizza { get; set; }
         public int Amount { get; set; } //Represents how many of the same pizza has been ordered
 

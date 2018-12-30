@@ -17,6 +17,5 @@ namespace PizzaProject2.Models.Services
         void CreatePizza(Pizza newPizza);
         //void DeleteAllPizzas();
         void EditPizza(Pizza updatedPizza);
-        List<GraphDataViewModel> ReplacePizzaIdWithPizzaNr(List<GraphDataViewModel> graphDataViewModel);
     }
 }

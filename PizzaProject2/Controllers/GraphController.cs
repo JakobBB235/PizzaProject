@@ -25,7 +25,7 @@ namespace PizzaProject2.Controllers
         public ActionResult GetJsonPizzaData()
         {
             GraphDataClass gdc = new GraphDataClass();
-            List<GraphDataViewModel> viewModels = gdc.ConvertToViewModels();
+            List<GraphDataViewModel> viewModels = gdc.GetGraphDataViewModels();
 
             return Json(viewModels, JsonRequestBehavior.AllowGet);
         }

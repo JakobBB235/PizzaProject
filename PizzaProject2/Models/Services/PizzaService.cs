@@ -63,8 +63,14 @@ namespace PizzaProject2.Models.Services
             //{
 
             //}
-            var thePizza = (from p in _dbContext.Pizzas where p.Id == id select p).First();
-            return thePizza;
+            try { 
+                var thePizza = (from p in _dbContext.Pizzas where p.Id == id select p).First();
+                return thePizza;
+            }
+            catch (InvalidOperationException e)
+            {
+                return null;
+            }
         }
 
         public void InsertAllPizzas(List<Pizza> pizzas)
@@ -149,15 +155,15 @@ namespace PizzaProject2.Models.Services
             }
         }
 
-        public List<GraphDataViewModel> ReplacePizzaIdWithPizzaNr(List<GraphDataViewModel> graphDataViewModel)
-        {  
-            foreach(GraphDataViewModel item in graphDataViewModel)
-            {
-                Pizza pizza = GetPizzaById(Convert.ToInt32(item.Pizza)); //Get pizza in DB
-                item.Pizza = pizza.Nr.ToString(); //Set the correct pizza nr.
-            }
+        //public List<GraphDataViewModel> ReplacePizzaIdWithPizzaNr(List<GraphDataViewModel> graphDataViewModel)
+        //{
+        //    foreach (GraphDataViewModel item in graphDataViewModel)
+        //    {
+        //        Pizza pizza = GetPizzaById(Convert.ToInt32(item.Pizza)); //Get pizza in DB
+        //        item.Pizza = pizza.Nr.ToString(); //Set the correct pizza nr.
+        //    }
 
-            return graphDataViewModel;
-        }
+        //    return graphDataViewModel;
+        //}
     }
 }

@@ -29,8 +29,7 @@ namespace PizzaProject2.Models.Services
             return order;
         }
 
-        //public void PayCreateOrder(List<Pizza> sessionPizzas, String userId) //int userId
-        public void PayCreateOrder(List<OrderItemViewModel> sessionPizzas, String userId) //int userId
+        public void PayCreateOrder(List<OrderItemViewModel> sessionPizzas, String userId) 
         {
             if (sessionPizzas.Count > 0)
             {
@@ -46,9 +45,6 @@ namespace PizzaProject2.Models.Services
                 for (int i = 0; i < sessionPizzas.Count; i++)
                 {
                     OrderItem orderItem = new OrderItem();
-                    //orderItem.OrderId = order.Id;
-                    //orderItem.PizzaId = sessionPizzas[i].Id;
-                    //orderItems.Add(orderItem);
                     orderItem.OrderId = order.Id;
                     orderItem.PizzaId = sessionPizzas[i].ThePizza.Id;
                     orderItem.Amount = sessionPizzas[i].Amount;

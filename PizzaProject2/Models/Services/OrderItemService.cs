@@ -55,7 +55,7 @@ namespace PizzaProject2.Models.Services
             return orderItems;
         }
 
-        public List<OrderItem> GetActiveOrderItems(List<Order> orders)
+        public List<OrderItem> GetAllActiveOrderItems(List<Order> orders)
         {
             List<int> orderIdList = new List<int>();
             foreach (Order item in orders)

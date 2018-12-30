@@ -22,18 +22,17 @@ namespace PizzaProject2.Models
         //}
 
         public Pizza ThePizza { get; set; }
-        //public Order TheOrder { get; set; }
         public int Amount { get; set; } //Represents how many of the same pizza has been ordered
 
-        public OrderItemViewModel(Pizza thePizza, int amount) // Order theOrder,
+        public OrderItemViewModel(Pizza thePizza, int amount)
         {
             ThePizza = thePizza;
-            //TheOrder = theOrder;
             Amount = amount;
         }
 
         public OrderItemViewModel()
         {
+            
         }
     }
 }

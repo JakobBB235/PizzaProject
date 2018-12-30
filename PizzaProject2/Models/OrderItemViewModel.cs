@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PizzaProject2.Models.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,13 +8,28 @@ namespace PizzaProject2.Models
 {
     public class OrderItemViewModel
     {
-        public int pizzaNr { get; set; }
-        public int orderId { get; set; }
+        //public int pizzaNr { get; set; }
+        //public int orderId { get; set; }
 
-        public OrderItemViewModel(int pizzaNr, int orderId)
+        //public OrderItemViewModel(int pizzaNr, int orderId)
+        //{
+        //    this.pizzaNr = pizzaNr;
+        //    this.orderId = orderId;
+        //}
+
+        //public OrderItemViewModel()
+        //{
+        //}
+
+        public Pizza ThePizza { get; set; }
+        //public Order TheOrder { get; set; }
+        public int Amount { get; set; } //Represents how many of the same pizza has been ordered
+
+        public OrderItemViewModel(Pizza thePizza, int amount) // Order theOrder,
         {
-            this.pizzaNr = pizzaNr;
-            this.orderId = orderId;
+            ThePizza = thePizza;
+            //TheOrder = theOrder;
+            Amount = amount;
         }
 
         public OrderItemViewModel()

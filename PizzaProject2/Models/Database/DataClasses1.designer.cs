@@ -108,6 +108,8 @@ namespace PizzaProject2.Models.Database
 		
 		private int _OrderId;
 		
+		private int _Amount;
+		
 		private EntityRef<Pizza> _Pizza;
 		
 		private EntityRef<Order> _Order;
@@ -122,6 +124,8 @@ namespace PizzaProject2.Models.Database
     partial void OnPizzaIdChanged();
     partial void OnOrderIdChanging(int value);
     partial void OnOrderIdChanged();
+    partial void OnAmountChanging(int value);
+    partial void OnAmountChanged();
     #endregion
 		
 		public OrderItem()
@@ -195,6 +199,26 @@ namespace PizzaProject2.Models.Database
 					this._OrderId = value;
 					this.SendPropertyChanged("OrderId");
 					this.OnOrderIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Int NOT NULL")]
+		public int Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
 				}
 			}
 		}

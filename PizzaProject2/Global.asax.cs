@@ -1,4 +1,5 @@
-﻿using PizzaProject2.Models.Database;
+﻿using PizzaProject2.Models;
+using PizzaProject2.Models.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,8 @@ namespace PizzaProject2
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            Session["Cart"] = new List<Pizza>();
+            //Session["Cart"] = new List<Pizza>();
+            Session["Cart"] = new List<OrderItemViewModel>();
         }
     }
 }

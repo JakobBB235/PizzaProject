@@ -11,7 +11,9 @@ namespace PizzaProject2.Models.Services
     {
         //void Pay();
         List<OrderItem> GetAllOrderItems();
-        List<OrderItemViewModel> CovertOrderItemToViewModel(List<Order> orders);
-        List<OrderItem> GetActiveOrderItems(List<Order> orders);
+        //List<OrderItemViewModel> CovertOrderItemToViewModel(List<Order> orders);
+        List<OrderItemViewModel> GetOrderItemViewModels(Order order);
+        List<OrderItem> GetActiveOrderItemsInOneOrder(Order order);
+        List<OrderItem> GetAllActiveOrderItems(List<Order> orders);
     }
 }

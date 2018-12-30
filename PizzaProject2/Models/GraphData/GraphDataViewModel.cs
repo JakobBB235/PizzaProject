@@ -9,7 +9,7 @@ namespace PizzaProject2.Models.GraphData
     {
         public int PizzaNr { get; set; }
         public String Pizza { get; set; } //Is actually PizzaNr
-        public int Amount { get; set; }
+        public int Amount { get; set; }  //Represents how many of the same pizza has been ordered in total
 
         public GraphDataViewModel(String pizza, int amount) //string pizzaName,
         {

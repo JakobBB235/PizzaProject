@@ -4,7 +4,7 @@
     ViewBag.Title = "ShoppingCart";
 }
 
-<div class="container">
+@*<div class="container">
     <h2>Bestillingskurv</h2>
 
     <table class="table">
@@ -26,7 +26,42 @@
                 <td>1</td>
                 <td>
                     <div class="new-button-class">
-                        @*Send new { id = pizza.id }*@
+                       
+                        <button type="submit" class="btn btn-danger">-</button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+
+    @using (Html.BeginForm("Pay", "Order", FormMethod.Post,
+        new { onclick = "return confirm('Er du sikker på at du vil betale?');" }))
+    {
+        <button type="submit" class="btn btn-primary">Betal</button>
+    }
+</div>*@
+<div class="container">
+    <h2>Bestillingskurv</h2>
+
+    <table class="table">
+        <tr>
+            <th>Nr.</th>
+            <th>Navn</th>
+            <th>Fyld</th>
+            <th>Pris</th>
+            <th>Antal</th>
+            <th></th>
+        </tr>
+        @foreach (var pizza in Model)
+        {
+            <tr>
+                <td>@pizza.ThePizza.Nr</td>
+                <td>@pizza.ThePizza.Name</td>
+                <td>@pizza.ThePizza.Toppings</td>
+                <td>@pizza.ThePizza.Price kr</td>
+                <td>@pizza.Amount</td>
+                <td>
+                    <div class="new-button-class">
                         <button type="submit" class="btn btn-danger">-</button>
                     </div>
                 </td>

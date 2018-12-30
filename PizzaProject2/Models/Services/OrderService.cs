@@ -29,14 +29,15 @@ namespace PizzaProject2.Models.Services
             return order;
         }
 
-        public void PayCreateOrder(List<Pizza> sessionPizzas, String userId) //int userId
+        //public void PayCreateOrder(List<Pizza> sessionPizzas, String userId) //int userId
+        public void PayCreateOrder(List<OrderItemViewModel> sessionPizzas, String userId) //int userId
         {
             if (sessionPizzas.Count > 0)
             {
                 Order order = new Order();
                 order.DateTimeCreated = DateTime.UtcNow.ToString(); 
                 order.IsActive = true; //Set order active to true
-                order.UserId = userId;//Try to get user id. does not work
+                order.UserId = userId;//Set UserId
 
                 _dbContext.Orders.InsertOnSubmit(order);
                 _dbContext.SubmitChanges();
@@ -45,14 +46,31 @@ namespace PizzaProject2.Models.Services
                 for (int i = 0; i < sessionPizzas.Count; i++)
                 {
                     OrderItem orderItem = new OrderItem();
+                    //orderItem.OrderId = order.Id;
+                    //orderItem.PizzaId = sessionPizzas[i].Id;
+                    //orderItems.Add(orderItem);
                     orderItem.OrderId = order.Id;
-                    orderItem.PizzaId = sessionPizzas[i].Id;
+                    orderItem.PizzaId = sessionPizzas[i].ThePizza.Id;
+                    orderItem.Amount = sessionPizzas[i].Amount;
                     orderItems.Add(orderItem);
                 }
 
                 _dbContext.OrderItems.InsertAllOnSubmit(orderItems);
                 _dbContext.SubmitChanges();
             }
+        }
+
+        public List<OrderViewModel> ConvertOrderToOrderViewModel(List<Order> orders)
+        {
+            List<OrderViewModel> orderViewModels = new List<OrderViewModel>();
+            OrderItemService orderItemService = new OrderItemService();
+            foreach (Order order in orders)
+            {
+                List<OrderItemViewModel> orderItemViewModels = orderItemService.GetOrderItemViewModels(order);
+                orderViewModels.Add(new OrderViewModel() { order = order, orderItemViewModels = orderItemViewModels });
+            }
+
+            return orderViewModels;
         }
     }
 }

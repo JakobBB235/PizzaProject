@@ -5,6 +5,7 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="PizzaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="OrderId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Pizza_OrderItem" Member="Pizza" ThisKey="PizzaId" OtherKey="Id" Type="Pizza" IsForeignKey="true" />
       <Association Name="Order_OrderItem" Member="Order" ThisKey="OrderId" OtherKey="Id" Type="Order" IsForeignKey="true" />
     </Type>

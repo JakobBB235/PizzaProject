@@ -2,36 +2,36 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClasses1">
   <DataContextMoniker Name="/DataClasses1DataContext" />
   <nestedChildShapes>
-    <classShape Id="69b4bfbd-f0e2-416a-b5b8-ce13f4b93e44" absoluteBounds="3.5, 1, 2, 1.3862939453125003">
+    <classShape Id="e786c5a4-d886-4f9a-aacf-49f802110233" absoluteBounds="3.5, 0.875, 2, 1.5785953776041666">
       <DataClassMoniker Name="/DataClasses1DataContext/OrderItem" />
       <nestedChildShapes>
-        <elementListCompartment Id="258b3434-360b-40dc-8791-89b8dfaa701e" absoluteBounds="3.515, 1.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="1729d185-8d6c-4d07-a254-cf9203b20d49" absoluteBounds="3.515, 1.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="383d23d9-004a-4726-983b-019a1636a834" absoluteBounds="0.75, 3.75, 2, 1.7708968098958327">
+    <classShape Id="210f5123-aeaf-4e56-afe8-f717d3535105" absoluteBounds="0.75, 3.75, 2, 1.7708968098958327">
       <DataClassMoniker Name="/DataClasses1DataContext/Pizza" />
       <nestedChildShapes>
-        <elementListCompartment Id="d4b0f5d8-03f6-4dd9-8063-0a0fd675ab11" absoluteBounds="0.765, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="4f5ccc7e-ed28-4760-bfa6-b372b5f0625a" absoluteBounds="0.765, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="3fcfff6d-f0b2-497d-b4d6-f3dd2b015f75" absoluteBounds="0.75, 0.875, 2, 1.5785953776041664">
+    <classShape Id="32612b6d-f812-4c95-9bea-77726036c140" absoluteBounds="0.75, 0.875, 2, 1.5785953776041664">
       <DataClassMoniker Name="/DataClasses1DataContext/Order" />
       <nestedChildShapes>
-        <elementListCompartment Id="e8494c00-c1ec-438c-91a1-5ba9db99acb3" absoluteBounds="0.765, 1.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6c6ad567-27c1-45dc-852a-e3ad5fd8a862" absoluteBounds="0.765, 1.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 4.63544840494792); (4.5 : 4.63544840494792); (4.5 : 2.3862939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 4.63544840494792); (4.5 : 4.63544840494792); (4.5 : 2.45359537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DataClasses1DataContext/Pizza/Pizza_OrderItem" />
       <nodes>
-        <classShapeMoniker Id="383d23d9-004a-4726-983b-019a1636a834" />
-        <classShapeMoniker Id="69b4bfbd-f0e2-416a-b5b8-ce13f4b93e44" />
+        <classShapeMoniker Id="210f5123-aeaf-4e56-afe8-f717d3535105" />
+        <classShapeMoniker Id="e786c5a4-d886-4f9a-aacf-49f802110233" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 1.69314697265625); (3.5 : 1.69314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 1.66429768880208); (3.5 : 1.66429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DataClasses1DataContext/Order/Order_OrderItem" />
       <nodes>
-        <classShapeMoniker Id="3fcfff6d-f0b2-497d-b4d6-f3dd2b015f75" />
-        <classShapeMoniker Id="69b4bfbd-f0e2-416a-b5b8-ce13f4b93e44" />
+        <classShapeMoniker Id="32612b6d-f812-4c95-9bea-77726036c140" />
+        <classShapeMoniker Id="e786c5a4-d886-4f9a-aacf-49f802110233" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

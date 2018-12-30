@@ -12,6 +12,7 @@ namespace PizzaProject2.Models.Services
         void EndOrder(int orderId);
         Order GetOrderById(int orderId);
         List<Order> GetAllOrders();
-        void PayCreateOrder(List<Pizza> sessionPizzas, String userId); //int userId
+        void PayCreateOrder(List<OrderItemViewModel> sessionPizzas, String userId); //int userId
+        List<OrderViewModel> ConvertOrderToOrderViewModel(List<Order> orders);
     }
 }

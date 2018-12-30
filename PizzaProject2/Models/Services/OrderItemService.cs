@@ -17,20 +17,42 @@ namespace PizzaProject2.Models.Services
             return allOrderItems;
         }
 
-        public List<OrderItemViewModel> CovertOrderItemToViewModel(List<Order> orders) 
+        //public List<OrderItemViewModel> CovertOrderItemToViewModel(List<Order> orders) 
+        //{
+        //    List<OrderItem> orderItems = GetActiveOrderItems(orders);
+        //    List<OrderItemViewModel> orderItemViewModels = new List<OrderItemViewModel>();
+
+        //    PizzaService pizzaService = new PizzaService();
+        //    List<Pizza> pizzas = new List<Pizza>();
+        //    foreach (OrderItem item in orderItems)
+        //    {
+        //        Pizza pizza = pizzaService.GetPizzaById(item.PizzaId);
+        //        //orderItemViewModels.Add(new OrderItemViewModel() { pizzaNr = pizza.Nr, orderId = item.OrderId });
+        //        orderItemViewModels.Add(new OrderItemViewModel() { ThePizza = pizza, Amount = item.Amount }); //WHY does this not work?
+        //    }
+
+        //    return orderItemViewModels;
+        //}
+        public List<OrderItemViewModel> GetOrderItemViewModels(Order order)
         {
-            List<OrderItem> orderItems = GetActiveOrderItems(orders);
+            List<OrderItem> orderItems = GetActiveOrderItemsInOneOrder(order);
             List<OrderItemViewModel> orderItemViewModels = new List<OrderItemViewModel>();
 
             PizzaService pizzaService = new PizzaService();
-            List<Pizza> pizzas = new List<Pizza>();
             foreach (OrderItem item in orderItems)
             {
                 Pizza pizza = pizzaService.GetPizzaById(item.PizzaId);
-                orderItemViewModels.Add(new OrderItemViewModel() { pizzaNr = pizza.Nr, orderId = item.OrderId });
+                //orderItemViewModels.Add(new OrderItemViewModel() { pizzaNr = pizza.Nr, orderId = item.OrderId });
+                orderItemViewModels.Add(new OrderItemViewModel() { ThePizza = pizza, Amount = item.Amount }); //WHY does this not work?
             }
 
             return orderItemViewModels;
+        }
+
+        public List<OrderItem> GetActiveOrderItemsInOneOrder(Order order)
+        {
+            List<OrderItem> orderItems = (from p in _dbContext.OrderItems where p.Id == order.Id select p).ToList();
+            return orderItems;
         }
 
         public List<OrderItem> GetActiveOrderItems(List<Order> orders)

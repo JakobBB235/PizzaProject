@@ -34,6 +34,12 @@
     </table>
     <h3>Sum: @((from p in Model select p).Sum(x => x.ThePizza.Price * x.Amount)) kr.</h3>
 
+    @* Radio Buttons does not work yet! This has to be inside the form, but is placed here to make the form still work *@
+    <div style="padding-bottom: 10px">
+        <label class="radio-inline"><input type="radio" name="optradio" checked>Hent Selv</label>
+        <label class="radio-inline"><input type="radio" name="optradio" >Udbringning</label>
+    </div>
+
     @using (Html.BeginForm("Pay", "Order", FormMethod.Post,
         new { onclick = "return confirm('Er du sikker på at du vil betale?');" }))
     {

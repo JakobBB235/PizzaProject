@@ -17,16 +17,23 @@
             <th>
                 Bestilt
             </th>
+            <th>
+                Bestillingstype
+            </th>
             <th></th>
         </tr>
 
         <tr>
             <td>
-                @* REAL USERNAME MISSING *@
+                @* REAL USERNAME MISSING, Could use ViewBag to fix? *@
                 test
             </td>
             <td>
                 @Html.DisplayFor(modelItem => order.order.DateTimeCreated)
+            </td>
+            @* Bestillingstype does not work yet. Afhentning/Udbringning *@
+            <td>
+                Afhentning
             </td>
             <td>
                 @Html.ActionLink("X", "EndOrder", "Order", new { id = order.order.Id }, new { @class = "btn btn-danger" })
@@ -38,7 +45,8 @@
                 PizzaNr
             </th>
         </tr>
-        
+
+        @*This loop does not work for some reason! Trying to iterate over the list of OrderItemViewModel contained in OrderViewModel*@
         foreach (var item in order.orderItemViewModels)
         {
             <tr>

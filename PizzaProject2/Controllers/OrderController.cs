@@ -21,9 +21,6 @@ namespace PizzaProject2.Controllers
         //Create partial view for the shoppingcart
         public PartialViewResult PartialShoppingCartLoad() 
         {
-            //List<Pizza> sessionPizzas = (List<Pizza>)Session["Cart"];
-            //return PartialView("_ShoppingCart", sessionPizzas);
-
             List<OrderItemViewModel> sessionPizzas = (List<OrderItemViewModel>)Session["Cart"];
             return PartialView("_ShoppingCart", sessionPizzas);
         }
@@ -32,32 +29,17 @@ namespace PizzaProject2.Controllers
         public PartialViewResult PartialShoppingCartAddPizza(int id)
         {
             var thePizza = _pizzaService.GetPizzaById(id);
-            //List<Pizza> sessionPizzas = (List<Pizza>)Session["Cart"];
-            //sessionPizzas.Add(thePizza);
             List<OrderItemViewModel> sessionPizzas = (List<OrderItemViewModel>)Session["Cart"];
-            //foreach(OrderItemViewModel item in sessionPizzas)
-            //{
-            //    if(item.ThePizza == thePizza) //If this does not work check id instead
-            //    {
-            //        item.Amount++;
-            //        break;
-            //    }
-            //    else if ()
-            //    {
-            //        sessionPizzas.Add(new OrderItemViewModel() { ThePizza = thePizza, Amount = 1 });
-            //        break;
-            //    }
-            //}
 
             for (int i = 0; i <= sessionPizzas.Count; i++)
             {
-
+                //This is to either add a new object to session or increment the Amount attribute, because more than one of the same pizza
                 if (i == sessionPizzas.Count)
                 {
                     sessionPizzas.Add(new OrderItemViewModel() { ThePizza = thePizza, Amount = 1 });
                     break;
                 }
-                if (sessionPizzas[i].ThePizza.Id == thePizza.Id) //If this does not work check id instead
+                if (sessionPizzas[i].ThePizza.Id == thePizza.Id)
                 {
                     sessionPizzas[i].Amount++;
                     break;
@@ -104,19 +86,6 @@ namespace PizzaProject2.Controllers
         public ActionResult ViewOrders()
         {
             var orders = _orderService.GetAllOrders(); //get active orders from DB
-
-            //Convert to view models
-            //List<OrderItemViewModel> orderItemViewModels = _orderItemService.CovertOrderItemToViewModel(orders);
-            //OrderViewModel orderViewModel = new OrderViewModel(orders, orderItemViewModels);
-
-            //List<OrderItemViewModel> orderItemViewModels = _orderItemService.CovertOrderItemToViewModel(orders);
-            //List<OrderViewModel> orderViewModels = new OrderViewModel(orders, orderItemViewModels);
-
-            //List<OrderViewModel> orderViewModels = new List<OrderViewModel>();
-            //foreach (Order order in orders) {
-            //    List<OrderItemViewModel> orderItemViewModels = _orderItemService.GetOrderItemViewModels(order);
-            //    orderViewModels.Add(new OrderViewModel() { order = order, orderItemViewModels = orderItemViewModels });
-            //}
             List<OrderViewModel> orderViewModels = _orderService.ConvertOrderToOrderViewModel(orders);
 
             return View(orderViewModels);

@@ -29,7 +29,7 @@ namespace PizzaProject2.Models
 
         public OrderItemViewModel()
         {
-            
+
         }
     }
 }

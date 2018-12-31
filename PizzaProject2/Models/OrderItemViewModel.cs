@@ -19,6 +19,7 @@ namespace PizzaProject2.Models
 
         public Pizza ThePizza { get; set; }
         public int Amount { get; set; } //Represents how many of the same pizza has been ordered
+        //public double TotalSumPrice { get; set; }
 
         public OrderItemViewModel(Pizza thePizza, int amount)
         {

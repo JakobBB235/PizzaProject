@@ -22,7 +22,7 @@
                 <td>@pizza.ThePizza.Nr</td>
                 <td>@pizza.ThePizza.Name</td>
                 <td>@pizza.ThePizza.Toppings</td>
-                <td>@pizza.ThePizza.Price kr</td>
+                <td>@(pizza.ThePizza.Price * pizza.Amount) kr.</td>
                 <td>@pizza.Amount</td>
                 <td>
                     <div class="new-button-class">
@@ -32,6 +32,7 @@
             </tr>
         }
     </table>
+    <h3>Sum: @((from p in Model select p).Sum(x => x.ThePizza.Price * x.Amount)) kr.</h3>
 
     @using (Html.BeginForm("Pay", "Order", FormMethod.Post,
         new { onclick = "return confirm('Er du sikker på at du vil betale?');" }))
